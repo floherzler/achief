@@ -1,11 +1,13 @@
 [build]
-  command = "flutter build web"
+  command = "npm install"  # Install any necessary Node.js packages
   publish = "build/web"
+
+[build.environment]
+  FLUTTER_VERSION = "2.8.0"  # Specify the Flutter version you want to use
+
+[build.lifecycle]
+  before_build = ["./install_flutter.sh"]
 
 [context.production]
-  command = "flutter build web --release"
-  publish = "build/web"
-
-[context.deploy-preview]
-  command = "flutter build web --release"
+  command = "npm run build"
   publish = "build/web"
